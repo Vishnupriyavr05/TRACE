@@ -464,78 +464,7 @@ TRACE/
 
 node_modules directories are intentionally excluded from version control.
 
-12. Installation and Local Setup
-Prerequisites
-
-Install the following:
-
-Node.js
-npm
-MongoDB
-Docker Desktop
-GROBID when full-text processing is required
-Clone the Repository
-git clone <repository-url>
-cd TRACE
-Install Backend Dependencies
-cd backend
-npm install
-Install Frontend Dependencies
-
-Open another terminal:
-
-cd frontend
-npm install
-Configure Environment Variables
-
-Create the required environment configuration for the backend.
-
-Example:
-
-AI_PROVIDER=openai_compatible
-AI_MODEL=<your-model>
-AI_API_KEY=<your-api-key>
-AI_BASE_URL=<provider-base-url>
-
-MONGODB_URI=<your-mongodb-connection-string>
-
-AI_TIMEOUT_MS=60000
-AI_MAX_RETRIES=2
-TRACE_MAX_LLM_CALLS=24
-
-Additional environment variables may be required depending on the enabled TRACE configuration profile.
-
-Never commit real API keys, database passwords, or other credentials to GitHub.
-
-Start MongoDB
-
-Ensure MongoDB is running and accessible using the configured connection string.
-
-Start GROBID
-
-If full-text processing is required:
-
-docker run --rm -p 8070:8070 grobid/grobid:0.9.0-crf
-
-GROBID is only required for the full-text processing path.
-
-Start the Backend
-
-From the backend directory:
-
-npm run dev
-
-Use the command defined in backend/package.json if the project configuration differs.
-
-Start the Frontend
-
-From the frontend directory:
-
-npm run dev
-
-Vite will provide the local development URL.
-
-13. Research Pipeline
+12. Research Pipeline
 
 A typical TRACE research run follows:
 
@@ -570,7 +499,8 @@ A typical TRACE research run follows:
               |
               v
 11. Research report, graph and citation views are generated
-14. Reliability and Resource Controls
+
+13. Reliability and Resource Controls
 
 TRACE contains mechanisms intended to prevent uncontrolled execution.
 
