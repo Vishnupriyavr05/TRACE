@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --color-ink: #0f172a;
+  --color-ink-soft: #334155;
+  --color-ink-muted: #64748b;
+  --color-surface: #f8fafc;
+  --color-surface-blue: #eef4ff;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-accent: #4f7cff;
+  --color-accent-deep: #3b63d9;
+  --color-panel: #f1f5f9;
+}
+
+.dark {
+  --color-ink: #f1f5f9;
+  --color-ink-soft: #cbd5e1;
+  --color-ink-muted: #94a3b8;
+  --color-surface: #0b1220;
+  --color-surface-blue: #111827;
+  --color-card: #111827;
+  --color-border: #1f2a3d;
+  --color-accent: #5b86ff;
+  --color-accent-deep: #4f7cff;
+  --color-panel: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface font-sans text-ink antialiased;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 124, 255, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(79, 124, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 124, 255, 0);
+  }
+}
+
+@keyframes connector-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.agent-pulse {
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+
+.agent-connector {
+  background: linear-gradient(
+    90deg,
+    rgba(79, 124, 255, 0.15),
+    rgba(79, 124, 255, 0.75),
+    rgba(79, 124, 255, 0.15)
+  );
+  background-size: 200% 100%;
+  animation: connector-flow 1.8s linear infinite;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-border) 55%, transparent) 25%,
+    color-mix(in srgb, var(--color-panel) 80%, transparent) 50%,
+    color-mix(in srgb, var(--color-border) 55%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.panel-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+}
+
+.panel-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.panel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.panel-scroll:hover,
+.panel-scroll:focus-within,
+.panel-scroll.is-scrolling {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-ink-muted) 55%, transparent) transparent;
+}
+
+.panel-scroll:hover::-webkit-scrollbar-thumb,
+.panel-scroll:focus-within::-webkit-scrollbar-thumb,
+.panel-scroll.is-scrolling::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-ink-muted) 55%, transparent);
+}
+
+.dark .panel-scroll:hover,
+.dark .panel-scroll:focus-within,
+.dark .panel-scroll.is-scrolling {
+  scrollbar-color: color-mix(in srgb, var(--color-ink-muted) 65%, transparent) transparent;
+}
+
+.dark .panel-scroll:hover::-webkit-scrollbar-thumb,
+.dark .panel-scroll:focus-within::-webkit-scrollbar-thumb,
+.dark .panel-scroll.is-scrolling::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-ink-muted) 65%, transparent);
+}
